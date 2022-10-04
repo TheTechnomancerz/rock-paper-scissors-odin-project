@@ -2,36 +2,46 @@
 function getComputerChoice(list){
     return list[Math.floor((Math.random()*list.length))];
 }
-// console.log(getComputerChoice(['rock', 'paper', 'scissors']))
-// let computerChoice = getComputerChoice(['rock', 'paper', 'scissors']);
-// let playerChoice = prompt('Rock, Paper, or Scissors?').toLowerCase();
+let playerScore = 0;
+let computerScore = 0;
 
 function oneRound(playerSelection, computerSelection){
-
-    if(playerSelection === computerSelection){
-        return console.log("You tied!");
+   
+    let player = prompt("Rock, Paper,or Scissors?").toLowerCase();
+    let computer = getComputerChoice(['rock', 'paper', 'scissors']);
+   // console.log(player, playerScore);
+    //console.log(computer, computerScore);
+    if(player == computer){
+        return console.log("It's a tie!");
     }
-    else if(playerSelection == 'paper' && computerSelection == 'rock' || playerSelection == 'scissors' && computerSelection == 'paper' || playerSelection == 'rock' && computerSelection == 'scissors'){
-        return console.log("You win! " + playerSelection + " beats " + computerSelection + "!");
+    else if(player == 'paper' && computer == 'rock' || player == 'scissors' && computer == 'paper' || player == 'rock' && computer == 'scissors'){
+        playerScore++;
+        //console.log(`Player Score: ${playerScore}`);
+        return console.log(`You win! ${player} beats ${computer}`);
     }
-    else if(playerSelection == 'rock' && computerSelection == 'paper' || playerSelection == 'paper' && computerSelection == 'scissors' || playerSelection == 'scissors' && computerSelection == 'rock'){
-        return console.log("You lose! " + computerSelection + " beats " + playerSelection + "!");
+    else if(player == 'rock' && computer == 'paper' || player == 'paper' && computer == 'scissors' || player == 'scissors' && computer == 'rock'){
+        computerScore++;
+        //console.log(`Computer Score: ${computerScore}`);
+        return console.log(`You lose! ${computer} beats ${player}`);
     }
     else{
-        return console.log("Did you choose rock, paper, or scissors?")
+        return console.log("Did you select Rock, Paper, or Scissors?")
     }
+
+   
 }
-
-
-// oneRound('rock', computerChoice);
-// oneRound('paper', computerChoice);
-// oneRound('scissors', computerChoice);
-
-
 function game(){
-    for (let i = 0; i < 5; i++) {
-        console.log(oneRound(prompt("Rock, Paper, or Scissors").toLowerCase(), getComputerChoice(['rock', 'paper', 'scissors'])));
+    for(i=0; i<5; i++){
+        oneRound()
     }
-
+    if(playerScore === computerScore){
+        return console.log(`It's a draw! Final score Player${playerScore}:Computer${computerScore}`)
+    }
+    else if(playerScore > computerScore){
+        return console.log(`You win the game! Final score Player${playerScore}:Computer${computerScore}`);        
+    }
+    else{
+        return console.log(`You lose! Final score Player${playerScore}:Computer${computerScore}`);
+    }   
 }
-game();
+game()
