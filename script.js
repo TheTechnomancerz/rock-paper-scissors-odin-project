@@ -3,13 +3,10 @@ function getComputerChoice(list){
     return list[Math.floor((Math.random()*list.length))];
 }
 // console.log(getComputerChoice(['rock', 'paper', 'scissors']))
-
-let computerChoice = getComputerChoice(['rock', 'paper', 'scissors']);
-let playerChoice = prompt('Rock, Paper, or Scissors?').toLowerCase();
+// let computerChoice = getComputerChoice(['rock', 'paper', 'scissors']);
+// let playerChoice = prompt('Rock, Paper, or Scissors?').toLowerCase();
 
 function oneRound(playerSelection, computerSelection){
-  //  console.log(`You chose ${playerSelection}`);
-  //  console.log(`They chose ${computerSelection}`);
 
     if(playerSelection === computerSelection){
         return console.log("You tied!");
@@ -24,4 +21,17 @@ function oneRound(playerSelection, computerSelection){
         return console.log("Did you choose rock, paper, or scissors?")
     }
 }
-oneRound(playerChoice, computerChoice);
+
+
+// oneRound('rock', computerChoice);
+// oneRound('paper', computerChoice);
+// oneRound('scissors', computerChoice);
+
+
+function game(){
+    for (let i = 0; i < 5; i++) {
+        console.log(oneRound(prompt("Rock, Paper, or Scissors").toLowerCase(), getComputerChoice(['rock', 'paper', 'scissors'])));
+    }
+
+}
+game();
